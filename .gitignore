@@ -1,0 +1,28 @@
+# Local credentials and private configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+.gemini/
+
+# Environments and generated files
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+preview/
+frames/
+final/
+*.log
+Thumbs.db
+.DS_Store
+
+# Media is distributed separately after track-license verification
+*.mp3
+*.wav
+*.m4a
+*.mp4
+*.mov

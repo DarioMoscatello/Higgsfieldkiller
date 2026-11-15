@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- three.js template for tools/web-engine/render_web.py (three.js r186 is served from
+     /lib/three/). Copy this folder into clips/<project>/, set everything from t in
+     renderAt(t), and render with
+     python tools/web-engine/render_web.py <page_folder> --out clip.mp4 --end 4 -->
+<html>
+<head>
+<meta charset="utf-8">
+<style>html, body { margin: 0; background: #06080d; overflow: hidden; } canvas { display: block; }</style>
+<script type="importmap">{ "imports": { "three": "/lib/three/three.module.js" } }</script>
+</head>
+<body>
+<script type="module">
+import * as THREE from "three";
+
+const W = innerWidth, H = innerHeight;
+// preserveDrawingBuffer keeps the drawn frame readable by the screenshot.
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color("#06080d");
+const camera = new THREE.PerspectiveCamera(40, W / H, 0.1, 100);
+
+const knot = new THREE.Mesh(
+  new THREE.TorusKnotGeometry(1, 0.32, 256, 32),
+  new THREE.MeshStandardMaterial({ color: "#4f8cff", metalness: 0.35, roughness: 0.3 }),
+);
+scene.add(knot);
+scene.add(new THREE.HemisphereLight("#bcd4ff", "#1a1206", 0.8));
+const key = new THREE.DirectionalLight("#ffffff", 2.2);
+key.position.set(3, 4, 5);
+scene.add(key);
+
+window.renderAt = async (t) => {
+  knot.rotation.set(t * 0.6, t * 0.9, 0);
+  const a = t * 0.25;
+  camera.position.set(Math.sin(a) * 6, 1.2, Math.cos(a) * 6);
+  camera.lookAt(0, 0, 0);
+  renderer.render(scene, camera);
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  return "ok";
+};
+window.__info = { engine: "three", revision: THREE.REVISION, width: W, height: H };
+window.__ready = true;
+</script>
+</body>
+</html>

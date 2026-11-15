@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- SVG + anime.js template for tools/web-engine/render_web.py (anime.js 4.5 is served
+     from /lib/anime/). The timeline never plays by itself: renderAt(t) seeks it,
+     so every frame is exact. Render with
+     python tools/web-engine/render_web.py <page_folder> --out clip.mp4 --end 3 -->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; background: #f6f3ec; overflow: hidden; }
+  svg { display: block; width: 100vw; height: 100vh; }
+  text { font: 700 96px "Segoe UI", sans-serif; fill: #1d2433; }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1920 1080">
+  <path id="line" d="M260 700 C 620 380, 980 1020, 1660 520" fill="none" stroke="#e4572e" stroke-width="18" stroke-linecap="round"/>
+  <circle class="dot" cx="560" cy="800" r="34" fill="#2e86ab"/>
+  <circle class="dot" cx="960" cy="800" r="34" fill="#f2a541"/>
+  <circle class="dot" cx="1360" cy="800" r="34" fill="#3fa34d"/>
+  <text id="title" x="960" y="300" text-anchor="middle">SVG + anime.js</text>
+</svg>
+<script type="module">
+import { createTimeline, stagger, svg } from "/lib/anime/anime.esm.min.js";
+
+const tl = createTimeline({ autoplay: false, defaults: { ease: "outExpo", duration: 900 } });
+tl.add(svg.createDrawable("#line"), { draw: ["0 0", "0 1"], duration: 1400, ease: "inOutSine" }, 0)
+  .add(".dot", { scale: [0, 1], opacity: [0, 1], delay: stagger(120) }, 500)
+  .add("#title", { opacity: [0, 1], translateY: [40, 0] }, 900);
+
+window.renderAt = async (t) => {
+  tl.seek(t * 1000);
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  return "ok";
+};
+window.__info = { engine: "svg-anime", duration: tl.duration };
+window.__ready = true;
+</script>
+</body>
+</html>

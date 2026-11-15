@@ -1,0 +1,1451 @@
+{
+ "song_map_schema_version": "0.1.0",
+ "source": {
+  "sha256": "6d6a7e8ad9249decb66ea38032b2babafd6b90c9bf2c9bbd2066df056885cf5d",
+  "analysis_run_id": "d8a1b1b9f70243dda3e3b09d85f215e6",
+  "tool_version": "0.1.0.dev0",
+  "report_status": "complete",
+  "coverage_start_us": 25057,
+  "coverage_end_us": 148800000,
+  "executed_capabilities": [
+   "measurements",
+   "music",
+   "bars",
+   "stems",
+   "timeline",
+   "notes",
+   "lyrics",
+   "descriptions"
+  ],
+  "skipped_capabilities": []
+ },
+ "how_to_read": [
+  "Times are integer microseconds on the source timeline (start_us inclusive, end_us exclusive).",
+  "This map is a digest of report.json. Every value is an estimate or model suggestion unless the report marks it as measured.",
+  "Section letters group acoustically similar regions. They are not verse or chorus labels.",
+  "grid.irregular_bars lists bars whose length differs from the typical bar by more than 10%. Treat bar numbers around them as unreliable.",
+  "energy compares a section with this song's loudest section: high within 3 dB, medium within 8 dB, otherwise low. Loudness is not the same as excitement.",
+  "layers is the share of each section in which a separated layer is audible. Separation can leak, and a lead instrument or sample may land in the vocals layer.",
+  "descriptors are the most frequent CLAP suggestions inside the section, not verified facts.",
+  "Per-event detail (bar_beat, drum_hit, onset, chord_candidate, lyric_word (times only)) is in report.json; dense 100 Hz curves are in envelopes.json.",
+  "Public kit: lyric words and note pitches are not included. lyrics holds line times and the model's unsure marks only."
+ ],
+ "summary": {
+  "duration_us": 148774943,
+  "tempo": {
+   "bpm": 75.0,
+   "beats_per_bar": 4,
+   "alternatives": [
+    {
+     "bpm": 37.5,
+     "relationship": "half-time"
+    },
+    {
+     "bpm": 150.0,
+     "relationship": "double-time"
+    }
+   ],
+   "source": "bars",
+   "observation_id": "obs_5899f9d2d375a534b998"
+  },
+  "key": {
+   "label": "A# major",
+   "alternatives": [
+    {
+     "label": "D# minor",
+     "correlation": 0.405
+    },
+    {
+     "label": "A# minor",
+     "correlation": 0.3652
+    }
+   ],
+   "observation_id": "obs_17746658122945171e97"
+  },
+  "lyrics_language": "en",
+  "layers": {
+   "vocals": {
+    "layer": "vocals",
+    "active_fraction": 0.981,
+    "level_relative_to_mix_db": -8.4
+   },
+   "drums": {
+    "layer": "drums",
+    "active_fraction": 0.844,
+    "level_relative_to_mix_db": -3.6
+   },
+   "bass": {
+    "layer": "bass",
+    "active_fraction": 0.949,
+    "level_relative_to_mix_db": -3.9
+   },
+   "other": {
+    "layer": "other",
+    "active_fraction": 0.193,
+    "level_relative_to_mix_db": -23.8
+   }
+  },
+  "descriptors": {
+   "genre": "rap",
+   "mood": "hopeful",
+   "instrument": "voice",
+   "vocals": "singing"
+  }
+ },
+ "grid": {
+  "source": "bars",
+  "beat_times_us": [
+   45057,
+   825057,
+   1605057,
+   2405057,
+   2805057,
+   3205057,
+   3605057,
+   4005057,
+   4405057,
+   4805057,
+   5205057,
+   5605057,
+   6405057,
+   7205057,
+   8005057,
+   8825057,
+   9605057,
+   10405057,
+   11205057,
+   12005057,
+   12805057,
+   13605057,
+   14405057,
+   15205057,
+   16005057,
+   16805057,
+   17605057,
+   18405057,
+   19185057,
+   20005057,
+   20805057,
+   21605057,
+   22405057,
+   23205057,
+   24005057,
+   24825057,
+   25605057,
+   26405057,
+   27205057,
+   28005057,
+   28785057,
+   29585057,
+   30405057,
+   31225057,
+   32005057,
+   32805057,
+   33605057,
+   34405057,
+   35205057,
+   36005057,
+   36805057,
+   37605057,
+   38405057,
+   39205057,
+   40005057,
+   40805057,
+   41605057,
+   42405057,
+   43205057,
+   44005057,
+   44785057,
+   45605057,
+   46385057,
+   47185057,
+   48005057,
+   48805057,
+   49605057,
+   50405057,
+   51205057,
+   52005057,
+   52805057,
+   53605057,
+   54405057,
+   55185057,
+   56005057,
+   56805057,
+   57605057,
+   58405057,
+   59205057,
+   60005057,
+   60805057,
+   61605057,
+   62405057,
+   63205057,
+   64005057,
+   64805057,
+   65605057,
+   66405057,
+   67205057,
+   68005057,
+   68805057,
+   69605057,
+   70405057,
+   71205057,
+   72005057,
+   72805057,
+   73605057,
+   74405057,
+   75205057,
+   76005057,
+   76805057,
+   77605057,
+   78405057,
+   79205057,
+   80005057,
+   80805057,
+   81585057,
+   82405057,
+   83185057,
+   84005057,
+   84805057,
+   85605057,
+   86405057,
+   87205057,
+   88005057,
+   88805057,
+   89605057,
+   90405057,
+   91185057,
+   92005057,
+   92805057,
+   93605057,
+   94405057,
+   95205057,
+   96005057,
+   96805057,
+   97605057,
+   98405057,
+   99205057,
+   100005057,
+   100805057,
+   101605057,
+   102405057,
+   103205057,
+   104005057,
+   104805057,
+   105605057,
+   106405057,
+   107205057,
+   108005057,
+   108805057,
+   109605057,
+   110405057,
+   111205057,
+   112005057,
+   112785057,
+   113605057,
+   114405057,
+   115205057,
+   116005057,
+   116805057,
+   117585057,
+   118405057,
+   119205057,
+   120005057,
+   120805057,
+   121605057,
+   122405057,
+   123205057,
+   124005057,
+   124805057,
+   125605057,
+   126425057,
+   127205057,
+   128005057,
+   128805057,
+   129605057,
+   130405057,
+   131205057,
+   132005057,
+   132805057,
+   133605057,
+   134405057,
+   135205057,
+   136005057,
+   136805057,
+   137605057,
+   138405057,
+   139205057,
+   140005057,
+   140805057,
+   141585057,
+   142405057,
+   143205057,
+   144005057,
+   144805057,
+   145625057
+  ],
+  "bar_start_times_us": [
+   45057,
+   1605057,
+   3205057,
+   5205057,
+   6405057,
+   9605057,
+   12805057,
+   16005057,
+   19185057,
+   22405057,
+   25605057,
+   28785057,
+   32005057,
+   35205057,
+   38405057,
+   41605057,
+   44785057,
+   48005057,
+   51205057,
+   54405057,
+   57605057,
+   60805057,
+   64005057,
+   67205057,
+   70405057,
+   73605057,
+   76805057,
+   80005057,
+   83185057,
+   86405057,
+   89605057,
+   92805057,
+   96005057,
+   99205057,
+   102405057,
+   105605057,
+   108805057,
+   112005057,
+   115205057,
+   118405057,
+   121605057,
+   124805057,
+   128005057,
+   131205057,
+   134405057,
+   137605057,
+   140805057,
+   144005057
+  ],
+  "typical_bar_us": 3200000,
+  "irregular_bars": [
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "sections": [
+  {
+   "index": 0,
+   "label": "A",
+   "start_us": 25057,
+   "end_us": 9605057,
+   "bars": {
+    "first": 1,
+    "last": 5
+   },
+   "energy": "medium",
+   "mean_loudness_dbfs": -14.2,
+   "relative_to_loudest_db": -5.3,
+   "change_from_previous_db": null,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 0.0,
+    "bass": 1.0,
+    "other": 0.9
+   },
+   "drum_hits": {},
+   "chords": [
+    "D# minor",
+    "C# minor",
+    "D#",
+    "B",
+    "F#",
+    "E",
+    "C# minor",
+    "D#",
+    "C# minor",
+    "D#"
+   ],
+   "melody": {
+    "notes": 34,
+    "lowest": "F#3",
+    "highest": "B3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": null,
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 3,
+   "observation_id": "obs_626242b562164bb92e9a"
+  },
+  {
+   "index": 1,
+   "label": "B",
+   "start_us": 9605057,
+   "end_us": 25605057,
+   "bars": {
+    "first": 6,
+    "last": 10
+   },
+   "energy": "medium",
+   "mean_loudness_dbfs": -16.2,
+   "relative_to_loudest_db": -7.3,
+   "change_from_previous_db": -2.0,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 0.76,
+    "bass": 1.0,
+    "other": 0.04
+   },
+   "drum_hits": {
+    "kick": 2,
+    "hihat_or_cymbal": 41,
+    "snare_or_clap": 7
+   },
+   "chords": [
+    "D#",
+    "E",
+    "C#",
+    "D# minor",
+    "E",
+    "C#",
+    "D# minor",
+    "E",
+    "C#",
+    "D# minor"
+   ],
+   "melody": {
+    "notes": 51,
+    "lowest": "D#2",
+    "highest": "A#3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "rapping"
+   },
+   "lyric_lines": 6,
+   "observation_id": "obs_e91f75b6080078738650"
+  },
+  {
+   "index": 2,
+   "label": "C",
+   "start_us": 25605057,
+   "end_us": 49599660,
+   "bars": {
+    "first": 11,
+    "last": 18
+   },
+   "energy": "high",
+   "mean_loudness_dbfs": -9.5,
+   "relative_to_loudest_db": -0.6,
+   "change_from_previous_db": 6.7,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 1.0,
+    "bass": 1.0,
+    "other": 0.0
+   },
+   "drum_hits": {
+    "kick": 33,
+    "hihat_or_cymbal": 61,
+    "snare_or_clap": 14
+   },
+   "chords": [
+    "D# minor",
+    "E minor",
+    "D# minor",
+    "E minor",
+    "C#",
+    "D# minor",
+    "E minor",
+    "C# minor",
+    "D# minor"
+   ],
+   "melody": {
+    "notes": 85,
+    "lowest": "D#2",
+    "highest": "B3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 7,
+   "observation_id": "obs_9538424f2477559b3c49"
+  },
+  {
+   "index": 3,
+   "label": "D",
+   "start_us": 49599660,
+   "end_us": 54405057,
+   "bars": {
+    "first": 19,
+    "last": 19
+   },
+   "energy": "high",
+   "mean_loudness_dbfs": -11.3,
+   "relative_to_loudest_db": -2.4,
+   "change_from_previous_db": -1.8,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 0.74,
+    "bass": 0.74,
+    "other": 0.0
+   },
+   "drum_hits": {
+    "hihat_or_cymbal": 2,
+    "kick": 6,
+    "snare_or_clap": 1
+   },
+   "chords": [
+    "F#",
+    "D# minor"
+   ],
+   "melody": {
+    "notes": 17,
+    "lowest": "F3",
+    "highest": "B3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 3,
+   "observation_id": "obs_fa2a7766b8afd1e3c111"
+  },
+  {
+   "index": 4,
+   "label": "C",
+   "start_us": 54405057,
+   "end_us": 80005057,
+   "bars": {
+    "first": 20,
+    "last": 27
+   },
+   "energy": "high",
+   "mean_loudness_dbfs": -8.9,
+   "relative_to_loudest_db": 0.0,
+   "change_from_previous_db": 2.4,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 1.0,
+    "bass": 1.0,
+    "other": 0.05
+   },
+   "drum_hits": {
+    "kick": 41,
+    "hihat_or_cymbal": 54,
+    "snare_or_clap": 32
+   },
+   "chords": [
+    "D# minor",
+    "E minor",
+    "C#",
+    "D# minor",
+    "E minor",
+    "B",
+    "D# minor"
+   ],
+   "melody": {
+    "notes": 89,
+    "lowest": "D#3",
+    "highest": "B3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 8,
+   "observation_id": "obs_734e1f0629bff5c738fa"
+  },
+  {
+   "index": 5,
+   "label": "B",
+   "start_us": 80005057,
+   "end_us": 92805057,
+   "bars": {
+    "first": 28,
+    "last": 31
+   },
+   "energy": "low",
+   "mean_loudness_dbfs": -17.4,
+   "relative_to_loudest_db": -8.5,
+   "change_from_previous_db": -8.5,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 0.92,
+    "bass": 1.0,
+    "other": 0.69
+   },
+   "drum_hits": {
+    "hihat_or_cymbal": 39,
+    "snare_or_clap": 9
+   },
+   "chords": [
+    "D# minor",
+    "E",
+    "C#",
+    "D# minor",
+    "E",
+    "C#",
+    "D# minor",
+    "E",
+    "C#",
+    "D# minor",
+    "E",
+    "D#"
+   ],
+   "melody": {
+    "notes": 46,
+    "lowest": "D#3",
+    "highest": "A#3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 5,
+   "observation_id": "obs_1d501a796726ee73c665"
+  },
+  {
+   "index": 6,
+   "label": "E",
+   "start_us": 92805057,
+   "end_us": 105605057,
+   "bars": {
+    "first": 32,
+    "last": 35
+   },
+   "energy": "high",
+   "mean_loudness_dbfs": -10.6,
+   "relative_to_loudest_db": -1.7,
+   "change_from_previous_db": 6.8,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 1.0,
+    "bass": 1.0,
+    "other": 0.1
+   },
+   "drum_hits": {
+    "kick": 19,
+    "hihat_or_cymbal": 30,
+    "snare_or_clap": 8
+   },
+   "chords": [
+    "D#",
+    "C# minor",
+    "D#",
+    "C# minor",
+    "D#",
+    "C# minor",
+    "D#",
+    "B",
+    "E"
+   ],
+   "melody": {
+    "notes": 38,
+    "lowest": "F#3",
+    "highest": "B3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 4,
+   "observation_id": "obs_0ace76ee5c7e1f18d9e3"
+  },
+  {
+   "index": 7,
+   "label": "C",
+   "start_us": 105605057,
+   "end_us": 113593855,
+   "bars": {
+    "first": 36,
+    "last": 38
+   },
+   "energy": "high",
+   "mean_loudness_dbfs": -10.7,
+   "relative_to_loudest_db": -1.8,
+   "change_from_previous_db": -0.1,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 0.62,
+    "bass": 0.75,
+    "other": 0.58
+   },
+   "drum_hits": {
+    "kick": 7,
+    "hihat_or_cymbal": 13,
+    "snare_or_clap": 4
+   },
+   "chords": [
+    "C minor",
+    "C#",
+    "D#",
+    "C#"
+   ],
+   "melody": {
+    "notes": 25,
+    "lowest": "F#3",
+    "highest": "D#4"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 2,
+   "observation_id": "obs_d5dfd662f9054aa055ee"
+  },
+  {
+   "index": 8,
+   "label": "D",
+   "start_us": 113593855,
+   "end_us": 118405057,
+   "bars": {
+    "first": 39,
+    "last": 39
+   },
+   "energy": "high",
+   "mean_loudness_dbfs": -10.9,
+   "relative_to_loudest_db": -2.0,
+   "change_from_previous_db": -0.2,
+   "layers": {
+    "vocals": 1.0,
+    "drums": 1.0,
+    "bass": 1.0,
+    "other": 0.0
+   },
+   "drum_hits": {
+    "hihat_or_cymbal": 5,
+    "kick": 5,
+    "snare_or_clap": 1
+   },
+   "chords": [
+    "D#"
+   ],
+   "melody": {
+    "notes": 23,
+    "lowest": "D#3",
+    "highest": "B3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 3,
+   "observation_id": "obs_3b5dcd9ddfcd5e880500"
+  },
+  {
+   "index": 9,
+   "label": "C",
+   "start_us": 118405057,
+   "end_us": 148800000,
+   "bars": {
+    "first": 40,
+    "last": 48
+   },
+   "energy": "high",
+   "mean_loudness_dbfs": -9.6,
+   "relative_to_loudest_db": -0.7,
+   "change_from_previous_db": 1.3,
+   "layers": {
+    "vocals": 0.91,
+    "drums": 0.85,
+    "bass": 0.86,
+    "other": 0.12
+   },
+   "drum_hits": {
+    "kick": 39,
+    "hihat_or_cymbal": 55,
+    "snare_or_clap": 32
+   },
+   "chords": [
+    "D# minor",
+    "C major",
+    "C#"
+   ],
+   "melody": {
+    "notes": 94,
+    "lowest": "D#3",
+    "highest": "B3"
+   },
+   "descriptors": {
+    "genre": "rap",
+    "mood": "hopeful",
+    "instrument": "voice",
+    "vocals": "singing"
+   },
+   "lyric_lines": 11,
+   "observation_id": "obs_6f23048df8eb5c8bb2d8"
+  }
+ ],
+ "lyrics": [
+  {
+   "start_us": 25057,
+   "end_us": 3285057,
+   "unsure": false
+  },
+  {
+   "start_us": 3285057,
+   "end_us": 6525057,
+   "unsure": false
+  },
+  {
+   "start_us": 6525057,
+   "end_us": 10245057,
+   "unsure": false
+  },
+  {
+   "start_us": 10245057,
+   "end_us": 12805057,
+   "unsure": true
+  },
+  {
+   "start_us": 12805057,
+   "end_us": 15305057,
+   "unsure": true
+  },
+  {
+   "start_us": 15305057,
+   "end_us": 18425057,
+   "unsure": false
+  },
+  {
+   "start_us": 18425057,
+   "end_us": 21685057,
+   "unsure": false
+  },
+  {
+   "start_us": 21685057,
+   "end_us": 24905057,
+   "unsure": true
+  },
+  {
+   "start_us": 24905057,
+   "end_us": 28105057,
+   "unsure": false
+  },
+  {
+   "start_us": 28105057,
+   "end_us": 31325057,
+   "unsure": false
+  },
+  {
+   "start_us": 31325057,
+   "end_us": 34325057,
+   "unsure": true
+  },
+  {
+   "start_us": 34325057,
+   "end_us": 37305057,
+   "unsure": false
+  },
+  {
+   "start_us": 37305057,
+   "end_us": 40925057,
+   "unsure": true
+  },
+  {
+   "start_us": 40925057,
+   "end_us": 43985057,
+   "unsure": false
+  },
+  {
+   "start_us": 43985057,
+   "end_us": 47265057,
+   "unsure": false
+  },
+  {
+   "start_us": 47265057,
+   "end_us": 50045057,
+   "unsure": false
+  },
+  {
+   "start_us": 50045057,
+   "end_us": 52285057,
+   "unsure": false
+  },
+  {
+   "start_us": 52285057,
+   "end_us": 53785057,
+   "unsure": false
+  },
+  {
+   "start_us": 53785057,
+   "end_us": 57685057,
+   "unsure": true
+  },
+  {
+   "start_us": 57685057,
+   "end_us": 60965057,
+   "unsure": true
+  },
+  {
+   "start_us": 60965057,
+   "end_us": 64685057,
+   "unsure": true
+  },
+  {
+   "start_us": 64685057,
+   "end_us": 67225057,
+   "unsure": true
+  },
+  {
+   "start_us": 67225057,
+   "end_us": 70465057,
+   "unsure": true
+  },
+  {
+   "start_us": 70465057,
+   "end_us": 73745057,
+   "unsure": false
+  },
+  {
+   "start_us": 73745057,
+   "end_us": 77485057,
+   "unsure": false
+  },
+  {
+   "start_us": 77485057,
+   "end_us": 79665057,
+   "unsure": false
+  },
+  {
+   "start_us": 79665057,
+   "end_us": 82625057,
+   "unsure": false
+  },
+  {
+   "start_us": 82625057,
+   "end_us": 85785057,
+   "unsure": false
+  },
+  {
+   "start_us": 85785057,
+   "end_us": 87365057,
+   "unsure": false
+  },
+  {
+   "start_us": 87685057,
+   "end_us": 88985057,
+   "unsure": true
+  },
+  {
+   "start_us": 88985057,
+   "end_us": 92125057,
+   "unsure": true
+  },
+  {
+   "start_us": 92125057,
+   "end_us": 95305057,
+   "unsure": false
+  },
+  {
+   "start_us": 95305057,
+   "end_us": 98525057,
+   "unsure": true
+  },
+  {
+   "start_us": 98525057,
+   "end_us": 101525057,
+   "unsure": false
+  },
+  {
+   "start_us": 101525057,
+   "end_us": 105005057,
+   "unsure": true
+  },
+  {
+   "start_us": 105005057,
+   "end_us": 107025057,
+   "unsure": true
+  },
+  {
+   "start_us": 107885057,
+   "end_us": 110245057,
+   "unsure": false
+  },
+  {
+   "start_us": 111205057,
+   "end_us": 114845057,
+   "unsure": false
+  },
+  {
+   "start_us": 114845057,
+   "end_us": 117205057,
+   "unsure": false
+  },
+  {
+   "start_us": 117685057,
+   "end_us": 118165057,
+   "unsure": true
+  },
+  {
+   "start_us": 118165057,
+   "end_us": 119705057,
+   "unsure": true
+  },
+  {
+   "start_us": 119705057,
+   "end_us": 121705057,
+   "unsure": true
+  },
+  {
+   "start_us": 121705057,
+   "end_us": 123305057,
+   "unsure": true
+  },
+  {
+   "start_us": 123305057,
+   "end_us": 124945057,
+   "unsure": false
+  },
+  {
+   "start_us": 124945057,
+   "end_us": 128665057,
+   "unsure": false
+  },
+  {
+   "start_us": 128665057,
+   "end_us": 131225057,
+   "unsure": true
+  },
+  {
+   "start_us": 131225057,
+   "end_us": 132525057,
+   "unsure": true
+  },
+  {
+   "start_us": 132525057,
+   "end_us": 134505057,
+   "unsure": false
+  },
+  {
+   "start_us": 134505057,
+   "end_us": 136085057,
+   "unsure": false
+  },
+  {
+   "start_us": 136085057,
+   "end_us": 137725057,
+   "unsure": false
+  },
+  {
+   "start_us": 137725057,
+   "end_us": 141465057,
+   "unsure": false
+  },
+  {
+   "start_us": 141465057,
+   "end_us": 144345057,
+   "unsure": false
+  }
+ ],
+ "moments": [
+  {
+   "time_us": 4025057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_239de7657626ccbde70f"
+   ]
+  },
+  {
+   "time_us": 5025057,
+   "type": "layer_enters",
+   "layer": "other",
+   "evidence": [
+    "obs_829ccec58963dfbc9fe4"
+   ]
+  },
+  {
+   "time_us": 10275057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_829ccec58963dfbc9fe4"
+   ]
+  },
+  {
+   "time_us": 10775057,
+   "type": "layer_enters",
+   "layer": "drums",
+   "evidence": [
+    "obs_e69190dca64bb5c46038"
+   ]
+  },
+  {
+   "time_us": 15525057,
+   "type": "layer_leaves",
+   "layer": "drums",
+   "evidence": [
+    "obs_e69190dca64bb5c46038"
+   ]
+  },
+  {
+   "time_us": 16525057,
+   "type": "layer_enters",
+   "layer": "drums",
+   "evidence": [
+    "obs_7a94cd8df9d882151c36"
+   ]
+  },
+  {
+   "time_us": 23525057,
+   "type": "layer_leaves",
+   "layer": "drums",
+   "evidence": [
+    "obs_7a94cd8df9d882151c36"
+   ]
+  },
+  {
+   "time_us": 25275057,
+   "type": "layer_enters",
+   "layer": "drums",
+   "evidence": [
+    "obs_f951f4ce969e61d07d6e"
+   ]
+  },
+  {
+   "time_us": 25605057,
+   "type": "energy_rise",
+   "change_db": 6.7,
+   "evidence": [
+    "obs_9538424f2477559b3c49"
+   ]
+  },
+  {
+   "time_us": 51275057,
+   "type": "layer_leaves",
+   "layer": "drums",
+   "evidence": [
+    "obs_f951f4ce969e61d07d6e"
+   ]
+  },
+  {
+   "time_us": 51525057,
+   "type": "layer_leaves",
+   "layer": "bass",
+   "evidence": [
+    "obs_20fb28281db0ca526d00"
+   ]
+  },
+  {
+   "time_us": 52525057,
+   "type": "layer_enters",
+   "layer": "drums",
+   "evidence": [
+    "obs_6a230248acb19845ab5b"
+   ]
+  },
+  {
+   "time_us": 52775057,
+   "type": "layer_enters",
+   "layer": "bass",
+   "evidence": [
+    "obs_7da8be39aa313b91a7fe"
+   ]
+  },
+  {
+   "time_us": 69525057,
+   "type": "layer_enters",
+   "layer": "other",
+   "evidence": [
+    "obs_2721e6ccfb5fbaa758ea"
+   ]
+  },
+  {
+   "time_us": 70775057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_2721e6ccfb5fbaa758ea"
+   ]
+  },
+  {
+   "time_us": 80005057,
+   "type": "energy_drop",
+   "change_db": -8.5,
+   "evidence": [
+    "obs_1d501a796726ee73c665"
+   ]
+  },
+  {
+   "time_us": 81775057,
+   "type": "layer_enters",
+   "layer": "other",
+   "evidence": [
+    "obs_1c58c1fc468aa6d101b5"
+   ]
+  },
+  {
+   "time_us": 87275057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_1c58c1fc468aa6d101b5"
+   ]
+  },
+  {
+   "time_us": 88275057,
+   "type": "layer_enters",
+   "layer": "other",
+   "evidence": [
+    "obs_f940fc348a81e799ee6e"
+   ]
+  },
+  {
+   "time_us": 90275057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_f940fc348a81e799ee6e"
+   ]
+  },
+  {
+   "time_us": 90775057,
+   "type": "layer_leaves",
+   "layer": "drums",
+   "evidence": [
+    "obs_6a230248acb19845ab5b"
+   ]
+  },
+  {
+   "time_us": 91525057,
+   "type": "layer_enters",
+   "layer": "other",
+   "evidence": [
+    "obs_7979317d125654853280"
+   ]
+  },
+  {
+   "time_us": 91775057,
+   "type": "layer_enters",
+   "layer": "drums",
+   "evidence": [
+    "obs_94d4a62f400ab21bf28a"
+   ]
+  },
+  {
+   "time_us": 92805057,
+   "type": "energy_rise",
+   "change_db": 6.8,
+   "evidence": [
+    "obs_0ace76ee5c7e1f18d9e3"
+   ]
+  },
+  {
+   "time_us": 94025057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_7979317d125654853280"
+   ]
+  },
+  {
+   "time_us": 105525057,
+   "type": "layer_enters",
+   "layer": "other",
+   "evidence": [
+    "obs_67a09902a744a8fa45d5"
+   ]
+  },
+  {
+   "time_us": 106025057,
+   "type": "layer_leaves",
+   "layer": "drums",
+   "evidence": [
+    "obs_94d4a62f400ab21bf28a"
+   ]
+  },
+  {
+   "time_us": 106775057,
+   "type": "layer_leaves",
+   "layer": "bass",
+   "evidence": [
+    "obs_7da8be39aa313b91a7fe"
+   ]
+  },
+  {
+   "time_us": 107525057,
+   "type": "layer_enters",
+   "layer": "drums",
+   "evidence": [
+    "obs_db7e552540f1d03141c5"
+   ]
+  },
+  {
+   "time_us": 107775057,
+   "type": "layer_enters",
+   "layer": "bass",
+   "evidence": [
+    "obs_0280d78d539cfe1c1628"
+   ]
+  },
+  {
+   "time_us": 108275057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_67a09902a744a8fa45d5"
+   ]
+  },
+  {
+   "time_us": 109275057,
+   "type": "layer_leaves",
+   "layer": "drums",
+   "evidence": [
+    "obs_db7e552540f1d03141c5"
+   ]
+  },
+  {
+   "time_us": 109525057,
+   "type": "layer_enters",
+   "layer": "other",
+   "evidence": [
+    "obs_eab3e096b8000f8a9d18"
+   ]
+  },
+  {
+   "time_us": 110025057,
+   "type": "layer_leaves",
+   "layer": "bass",
+   "evidence": [
+    "obs_0280d78d539cfe1c1628"
+   ]
+  },
+  {
+   "time_us": 110775057,
+   "type": "layer_enters",
+   "layer": "drums",
+   "evidence": [
+    "obs_e5a1af0e6cab5af8c06d"
+   ]
+  },
+  {
+   "time_us": 111025057,
+   "type": "layer_enters",
+   "layer": "bass",
+   "evidence": [
+    "obs_1238662a90f950ec5ff2"
+   ]
+  },
+  {
+   "time_us": 111525057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_eab3e096b8000f8a9d18"
+   ]
+  },
+  {
+   "time_us": 118525057,
+   "type": "layer_enters",
+   "layer": "other",
+   "evidence": [
+    "obs_6b9da4726b629c81bb19"
+   ]
+  },
+  {
+   "time_us": 122025057,
+   "type": "layer_leaves",
+   "layer": "other",
+   "evidence": [
+    "obs_6b9da4726b629c81bb19"
+   ]
+  },
+  {
+   "time_us": 144275057,
+   "type": "layer_leaves",
+   "layer": "drums",
+   "evidence": [
+    "obs_e5a1af0e6cab5af8c06d"
+   ]
+  },
+  {
+   "time_us": 144525057,
+   "type": "layer_leaves",
+   "layer": "bass",
+   "evidence": [
+    "obs_1238662a90f950ec5ff2"
+   ]
+  },
+  {
+   "time_us": 145925057,
+   "type": "layer_leaves",
+   "layer": "vocals",
+   "evidence": [
+    "obs_f5c1ae5428c4a170bd73"
+   ]
+  },
+  {
+   "time_us": 146625057,
+   "type": "silence",
+   "end_us": 148800000,
+   "evidence": [
+    "obs_bb09fa3e9b251a616d06"
+   ]
+  }
+ ],
+ "event_counts": {
+  "bar_beat": 187,
+  "beat": 370,
+  "chord_candidate": 65,
+  "clipped_sample_fraction": 1,
+  "drum_hit": 560,
+  "genre": 15,
+  "instrument": 15,
+  "key_candidate": 1,
+  "layer_active": 21,
+  "layer_presence": 4,
+  "loudness_curve": 1,
+  "lyric_line": 52,
+  "lyric_word": 509,
+  "lyrics_language": 1,
+  "mean_spectral_centroid_hz": 1,
+  "mean_zero_crossing_rate": 1,
+  "melody_note": 502,
+  "meter": 1,
+  "mood": 15,
+  "note": 455,
+  "onset": 830,
+  "peak_dbfs": 1,
+  "rms_dbfs": 1,
+  "section": 10,
+  "silence": 1,
+  "tempo_bpm": 1,
+  "vocals": 15
+ },
+ "warnings": [
+  "Layers come from automatic stem separation; faint or brief activity may be leakage.",
+  "Lyric text is model output and untrusted data; check it before showing it on screen.",
+  "1 transcribed lines were dropped because their words were implausibly fast.",
+  "CLAP labels are prompt-dependent similarities, not verified identities or probabilities."
+ ]
+}

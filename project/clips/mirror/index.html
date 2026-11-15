@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  canvas { display: block; }
+</style>
+<script type="importmap">{ "imports": { "three": "/lib/three/three.module.js" } }</script>
+</head>
+<body>
+<script type="module">
+import * as THREE from "three";
+
+const W = innerWidth, H = innerHeight;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color("#020205");
+
+// Camera setup
+const camera = new THREE.PerspectiveCamera(50, W / H, 0.1, 1000);
+
+// Load data
+let envData = null;
+let envelopes = null;
+let songMap = null;
+
+async function loadData() {
+    const [resEnv, resMap] = await Promise.all([
+        fetch("/envelopes.json"),
+        fetch("/song-map.json")
+    ]);
+    envData = await resEnv.json();
+    envelopes = envData.series;
+    songMap = await resMap.json();
+}
+
+let readyPromise = loadData();
+
+// Build Scene
+const GRID_SIZE = 48; // 48x48
+const SPACING = 1.0;
+const geometry = new THREE.BoxGeometry(0.8, 1, 0.8);
+const material = new THREE.MeshStandardMaterial({ 
+    color: 0xffffff,
+    metalness: 0.6,
+    roughness: 0.2
+});
+
+const instancedMesh = new THREE.InstancedMesh(geometry, material, GRID_SIZE * GRID_SIZE);
+instancedMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+scene.add(instancedMesh);
+
+const dummy = new THREE.Object3D();
+const colorObj = new THREE.Color();
+
+// Add central mirror (sphere)
+const mirrorGeo = new THREE.SphereGeometry(4, 64, 64);
+const mirrorMat = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    metalness: 1.0,
+    roughness: 0.05
+});
+const mirror = new THREE.Mesh(mirrorGeo, mirrorMat);
+scene.add(mirror);
+
+// Add lighting
+const hemiLight = new THREE.HemisphereLight(0x4466ff, 0x111111, 0.5);
+scene.add(hemiLight);
+
+const spotLight = new THREE.SpotLight(0xffffff, 5);
+spotLight.position.set(0, 30, 0);
+spotLight.angle = Math.PI / 4;
+spotLight.penumbra = 0.5;
+scene.add(spotLight);
+
+const dirLight1 = new THREE.DirectionalLight(0xff5555, 2.0);
+dirLight1.position.set(20, 10, -20);
+scene.add(dirLight1);
+
+const dirLight2 = new THREE.DirectionalLight(0x55ff55, 2.0);
+dirLight2.position.set(-20, 10, 20);
+scene.add(dirLight2);
+
+// Particles
+const partCount = 2000;
+const partGeo = new THREE.BufferGeometry();
+const partPos = new Float32Array(partCount * 3);
+for(let i=0; i<partCount * 3; i++) {
+    partPos[i] = (Math.random() - 0.5) * 150;
+}
+partGeo.setAttribute('position', new THREE.BufferAttribute(partPos, 3));
+const partMat = new THREE.PointsMaterial({ size: 0.3, color: 0xffffff, transparent: true, opacity: 0.5 });
+const particles = new THREE.Points(partGeo, partMat);
+scene.add(particles);
+
+window.renderAt = async (t) => {
+  await readyPromise;
+  
+  // Calculate indices
+  // The clock starts at 0 = 0 seconds in passage.mp3
+  // envData step is 10000us (0.01s). So base index = Math.floor(t * 100)
+  const baseIndex = Math.floor(t * 100);
+  
+  // Safety clamp
+  const idx = Math.min(Math.max(0, baseIndex), envelopes.loudness_dbfs.length - 1);
+  
+  const onset = envelopes.onset_strength[idx] || 0;
+  const drums = envelopes.layer_drums[idx] || 0;
+  const bass = envelopes.layer_bass[idx] || 0;
+  const vocals = envelopes.layer_vocals[idx] || 0;
+  
+  // Move camera
+  const radius = 35 + Math.sin(t * 0.3) * 10;
+  const camAngle = t * 0.2;
+  camera.position.x = Math.sin(camAngle) * radius;
+  camera.position.z = Math.cos(camAngle) * radius;
+  camera.position.y = 15 + bass * 8;
+  camera.lookAt(0, Math.sin(t) * 2, 0);
+  
+  // Pulse background and lights
+  scene.background.setHSL(0.6, 0.8, 0.02 + onset * 0.05);
+  spotLight.intensity = 5 + drums * 10;
+  
+  // Animate mirror
+  mirror.scale.setScalar(1 + bass * 0.3 + onset * 0.2);
+  mirror.position.y = 5 + Math.sin(t * 2) * 1.5;
+  
+  let i = 0;
+  for (let x = 0; x < GRID_SIZE; x++) {
+      for (let z = 0; z < GRID_SIZE; z++) {
+          const dx = x - GRID_SIZE/2 + 0.5;
+          const dz = z - GRID_SIZE/2 + 0.5;
+          const dist = Math.sqrt(dx*dx + dz*dz);
+          
+          // delay based on distance
+          const delay = Math.floor(dist * 2.5);
+          const localIdx = Math.min(Math.max(0, baseIndex - delay), envelopes.loudness_dbfs.length - 1);
+          
+          const localLow = envelopes.low[localIdx] || 0;
+          const localMid = envelopes.mid[localIdx] || 0;
+          const localHigh = envelopes.high[localIdx] || 0;
+          
+          dummy.position.set(dx * SPACING, 0, dz * SPACING);
+          
+          // Height based on low frequencies
+          const h = 0.5 + Math.pow(localLow, 1.5) * 12 + localMid * 3;
+          dummy.scale.set(0.8, h, 0.8);
+          dummy.position.y = h / 2;
+          
+          // Rotation based on high frequencies
+          dummy.rotation.y = localHigh * Math.PI;
+          
+          dummy.updateMatrix();
+          instancedMesh.setMatrixAt(i, dummy.matrix);
+          
+          // Color
+          // Central hue rotates over time, plus distance offset
+          const hue = (0.6 + localLow * 0.3 + dist * 0.01 + t * 0.02) % 1.0;
+          const lightness = 0.1 + localMid * 0.6 + (dist < 5 ? 0.2 : 0);
+          colorObj.setHSL(hue, 0.8, lightness);
+          instancedMesh.setColorAt(i, colorObj);
+          
+          i++;
+      }
+  }
+  
+  instancedMesh.instanceMatrix.needsUpdate = true;
+  if (instancedMesh.instanceColor) instancedMesh.instanceColor.needsUpdate = true;
+  
+  particles.rotation.y = t * 0.1;
+  particles.position.y = bass * 2;
+  
+  renderer.render(scene, camera);
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+  return "ok";
+};
+
+// Start rendering after load
+readyPromise.then(() => {
+    window.__info = { engine: "three", revision: THREE.REVISION, width: W, height: H };
+    window.__ready = true;
+}).catch(err => {
+    window.__error = err.message;
+});
+</script>
+</body>
+</html>
